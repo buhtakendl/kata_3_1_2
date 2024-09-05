@@ -29,13 +29,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
             auth -> auth.requestMatchers("/auth/login", "/auth/registration").permitAll()
-            .requestMatchers("/admin").hasRole("ADMIN")
+            .requestMatchers("/admin", "/admins/**").hasRole("ADMIN")
             .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
             .anyRequest().authenticated()
             )
         .formLogin(
-            formLogin -> formLogin
-            .loginPage("/auth/login").successHandler(new SuccessUserHandler())
+            formLogin -> formLogin.loginProcessingUrl("/process_login")
+            .successHandler(new SuccessUserHandler())
             )
         .logout(
             logout -> logout
@@ -44,24 +44,6 @@ public class SecurityConfig {
         );
         return http.build();
     }
-
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.formLogin(
-//                formLogin -> formLogin
-//                .loginPage("/auth/login")
-//                .loginProcessingUrl("process_login")
-//                .defaultSuccessUrl("/showUserInfo", true)
-//                .failureUrl("/auth/login?error")
-//                .permitAll()
-//        ).logout(
-//                logout -> logout
-//                        .logoutUrl("/logout")
-//                        .logoutSuccessUrl("/auth/login")
-//        );
-//    }
-
-
-
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(personDetailsService);

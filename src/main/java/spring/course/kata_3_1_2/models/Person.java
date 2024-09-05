@@ -13,7 +13,7 @@ public class Person {
     private int id;
 
     @NotEmpty
-    @Column (name="username", unique = true)
+    @Column (name="name", unique = true)
     private String username;
 
     @Column (name="age")
@@ -27,11 +27,6 @@ public class Person {
 
     public Person() {
 
-    }
-
-    public Person (String username, int age) {
-        this.username = username;
-        this.age = age;
     }
 
     public int getId() {

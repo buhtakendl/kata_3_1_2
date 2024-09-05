@@ -20,11 +20,6 @@ public class AuthController {
         this.registrarionService = registrarionService;
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "auth/login";
-    }
-
     @GetMapping("/registration")
     public String registrationPage(@ModelAttribute("person") Person person) {
         return "auth/registration";
@@ -33,7 +28,7 @@ public class AuthController {
     @PostMapping("/registration")
     public String registration(@ModelAttribute("person") Person person) {
         registrarionService.register(person);
-        return "redirect:/auth/login";
+        return "redirect:process_login";
     }
 
 }
