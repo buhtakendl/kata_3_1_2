@@ -11,11 +11,20 @@
     <label for="name">Имя</label>
     <input type="text" th:field="*{username}" id="name"/>
 
+    <label for="surname">Фамилия</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+
     <label for="age">Возраст</label>
     <input type="text" th:field="*{age}" id="age"/>
 
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email"/>
+
     <label for="password">Пароль</label>
     <input type="text" th:field="*{password}" id="password"/>
+
+    <label for="role">Роль (в формате "ROLE_")</label>
+    <input type="text" th:field="*{role}" id="role"/>
 
     <input type="submit" value="Create!"/>
 
