@@ -12,7 +12,7 @@ public class Controller {
 
     @GetMapping("/")
     public String index() {
-        return "/index";
+        return "firstPage";
     }
 
     @GetMapping("/showUserInfo")
@@ -21,7 +21,7 @@ public class Controller {
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
         System.out.println(personDetails.getPerson());
 
-        return "index";
+        return "firstPage";
     }
 
     @GetMapping("/admin")

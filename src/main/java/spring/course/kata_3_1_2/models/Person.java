@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="Person")
+@Table(name="person")
 public class Person {
 
     @Id
@@ -16,8 +16,14 @@ public class Person {
     @Column (name="name", unique = true)
     private String username;
 
+    @Column (name="surname")
+    private String surname;
+
     @Column (name="age")
     private int age;
+
+    @Column (name="email")
+    private String email;
 
     @Column (name="password")
     private String password;
@@ -51,6 +57,22 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

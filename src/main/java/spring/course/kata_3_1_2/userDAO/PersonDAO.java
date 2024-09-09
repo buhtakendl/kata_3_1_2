@@ -47,9 +47,15 @@ public class PersonDAO {
     }
 
     @Transactional
+    public void updateUserPerson(Person person) {
+        entityManager.merge(person);
+    }
+
+    @Transactional
     public void deleteUser(int id) {
         entityManager.remove(getUserById(id));
     }
+
 
     @Transactional
     public void deleteAllUsers() {
